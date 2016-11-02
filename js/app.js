@@ -1,7 +1,9 @@
 $(function() {
 
+  "use strict";
   //Job Role
   var title = $('#title');
+  var otherTitle = $('#other-title');
 
   //T-Shirt Info
   var $color = $('#color');
@@ -36,17 +38,19 @@ $(function() {
 
   //"Job Role" section of the form: reveal a text field when the "Other" option is selected from the
   //"Job Role" drop down menu
+  //  Hide "Your Title" field in the drop down
+  otherTitle.hide();
+
   title.change(function() {
     var selected = $(this).val();
+
     if(selected === 'other'){
-      //add an text input field
-      title.after('<input type="text" id="other-title" placeholder="Your Title">').show();
-    } else {
-      $('#other-title').remove();
+      otherTitle.show();
+    }
+    else {
+      otherTitle.hide();
     }
   });
-
-
 
   //"T-Shirt Info" section of the form: for the T-Shirt color menu,
   //only display the options that match the design selected in the "Design" menu.
